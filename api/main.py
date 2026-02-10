@@ -30,7 +30,7 @@ def load_model():
     global model
     if not model is None:
         return model
-    model = pickle.load(open('../model/model.pkl', 'rb'))
+    model = pickle.load(open('model/model.pkl', 'rb'))
     return model
 
 @app.get("/doc", include_in_schema=False)
