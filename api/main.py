@@ -9,6 +9,8 @@ import wine_characteristics as wine
 
 app = FastAPI()
 
+model = None
+
 class Request(BaseModel):
     characteristics: wine.Features
 
@@ -25,7 +27,12 @@ def custom_openapi():
     return app.openapi_schema
 
 def load_model():
-    return pickle.load(open('model.pkl', 'rb'))
+    global model
+    if not model is None:
+        return model
+    model = pickle.load(open('../model/model.pkl', 'rb'))
+    return model
+
 @app.get("/doc", include_in_schema=False)
 def swagger_ui():
     app.openapi = custom_openapi
@@ -38,7 +45,7 @@ def swagger_ui():
 def predict_endpoint(req: Request = Body(..., example=wine.example_json)):
     wine_features = req.characteristics
     data = wine.dict_to_ordered_list(wine_features)
-    #model = load_model()
-    #category = model.predict([data])
-    #return {"category": f'{category}'}
-    return {"category": f'{data}'}
+    model = load_model()
+    category = model.predict([data])
+    return {"category": f'{category}'}
+    # return {"category": f'{data}'}
