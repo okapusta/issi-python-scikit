@@ -17,18 +17,18 @@ def dict_to_ordered_list(d: Dict[str, Any]) -> List[float]:
 
 example_json = {
         "characteristics": {
-            "alcohol": 5,
-            "malic_acid": 5,
-            "ash": 5,
-            "alcalinity_of_ash": 5,
-            "magnesium": 5,
-            "total_phenols": 5,
-            "flavanoids": 5,
-            "nonflavanoid_phenols": 5,
-            "proanthocyanins": 5,
-            "color_intensity": 5,
-            "hue": 5,
-            "od280/od315_of_diluted_wines": 5,
-            "proline": 5
+            "alcohol": 13.88,
+            "malic_acid": 5.04,
+            "ash": 2.23,
+            "alcalinity_of_ash": 20,
+            "magnesium": 80,
+            "total_phenols": .98,
+            "flavanoids": .34,
+            "nonflavanoid_phenols": .4,
+            "proanthocyanins": .68,
+            "color_intensity": 4.9,
+            "hue": .58,
+            "od280/od315_of_diluted_wines": 1.33,
+            "proline": 415
         }
 }
